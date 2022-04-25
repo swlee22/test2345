@@ -39,6 +39,9 @@ dependencies:
   #toast
   fluttertoast: ^8.0.9
 
+  #alarm
+  flutter_local_notifications: ^9.4.1
+
   
 
 dev_dependencies:
