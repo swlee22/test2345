@@ -77,8 +77,8 @@ class _HomePageState extends State<HomePage> {
               //}
               await notification.zonedSchedule(
                 1,
-                'alarmTitle',
-                'alarmDescription',
+                'seventeen',
+                'right here',
                 tz.TZDateTime(
                   tz.local,
                   now.year,
