@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:study_package/model/inputform.dart';
 import 'package:study_package/page/Home_page.dart';
 import 'package:study_package/page/image_page.dart';
 import 'package:study_package/page/user_list_page.dart';
@@ -20,7 +21,9 @@ Future<void> main() async {
 
 Future<void> _initHive() async {
   await Hive.initFlutter();
+  Hive.registerAdapter(InputFormAdapter());
   await Hive.openBox('darkModeBox');
+  await Hive.openBox<InputForm>('inputFormBox');
 }
 
 final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -59,7 +62,7 @@ class MyApp extends StatelessWidget {
    
     return ValueListenableBuilder(
       valueListenable: Hive.box('darkModeBox').listenable(),
-      builder: (context, box, Widget) {
+      builder: (context, Box box, widget) {
         final darkMode = Hive.box('darkModeBox').get('mode', defaultValue: false);
         return MaterialApp(
           title: 'Flutter Demo',
